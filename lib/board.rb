@@ -104,7 +104,6 @@ class Board
       ret = false
       str = "nul"
     end
-    puts str[0]
     (ret == false || ret2 == false )? 
     (return [false, str[0]]): 
     (return [true, "nil"])
