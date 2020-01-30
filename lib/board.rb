@@ -14,7 +14,7 @@ class Board
     end
   end
 
-  #Cette function gere le tour des deux jouer
+  # Cette function gere le tour des deux jouer
   def play_turn(who)
     @count_turn += 1
     print "Joueur #{who.name} c'est votre tour\n>"
@@ -39,7 +39,7 @@ class Board
     end
   end
 
-  #Cette function sers a convertir les position
+  # Cette function sers a convertir les position
   def position(pos)
     if pos[0] == "A"
       return 0 + pos[1].to_i - 1
@@ -52,7 +52,7 @@ class Board
     end
   end
 
-   #Cette function determine si les condition de victoire on estait atteind
+   # Cette function determine si les condition de victoire on estait atteind
   def victory?
     i = 0
     c = 0

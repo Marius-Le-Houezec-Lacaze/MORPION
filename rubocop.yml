@@ -40,3 +40,5 @@ Metrics/BlockLength:
 
   - 'vendor/bundle'
 
+Metrics/LineLength:
+  Max: 1000
