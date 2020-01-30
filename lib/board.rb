@@ -20,20 +20,35 @@ class Board
     print "Joueur #{who.name} c'est votre tour\n>"
     if self.victory?[0] == true
       if who.value == "X"
-        i = gets.chomp
-        (@board[i.to_i + 1].status == " ")? 
-        (@board[i.to_i + 1].status = "X"): 
+        i = position(gets.chomp)
+        (@board[i].status == " ")? 
+        (@board[i].status = "X"): 
         (puts "vous ne pouvez pas placer ca ici".colorize(:red))
+        sleep 1
         who = 2
       else
         who = 1 
-        i = gets.chomp
-        (@board[i.to_i + 1].status == " ")? 
-        (@board[i.to_i + 1].status = "O"): 
-        (puts "vous ne pouvez pas placer ca ici".colorize(:red))
+        i =  position(gets.chomp)
+        (@board[i].status == " ")? 
+        (@board[i].status = "O"): 
+        (puts "vous ne pouvez pas placer ca ici\nVous passez votre tours".colorize(:red))
+        sleep 1
       end
     else
       nil
+    end
+  end
+
+  #Cette function sers a convertir les position
+  def position(pos)
+    if pos[0] == "A"
+      return 0 + pos[1].to_i - 1
+    elsif pos[0] == "B"
+      return 3 + pos[1].to_i - 1
+    elsif pos[0] == "C"
+      return 6 + pos[1].to_i - 1
+    else
+      return 0    
     end
   end
 
@@ -75,12 +90,12 @@ class Board
       str = "O"
     end
     @board.each{ |c| nul.concat(c.status) }
-
     if nul.count(" ") == 0
       ret = false
       str = "nul"
     end
-    (ret == false || ret2 == false )? (return [false, str[0]]): (return [true, "nil"])
+    (ret == false || ret2 == false )? 
+    (return [false, str[0]]): 
+    (return [true, "nil"])
   end
 end
-

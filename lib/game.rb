@@ -56,7 +56,7 @@ class Game
     else
       puts "Match nul"
     end
-    puts "Appuyer sur ENTRER pour continuer"
+    puts "Appuyer sur " + "ENTRER".colorize(:red) + " pour continuer"
     gets.chomp
   end    
 end
