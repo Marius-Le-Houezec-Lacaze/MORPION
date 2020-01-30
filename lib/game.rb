@@ -4,7 +4,7 @@ require_relative 'show'
 require_relative 'player'
 
 class Game
-  attr_accessor :player1, :player2, :my_board, :on_going, :show, :current_player, :arr_play
+  attr_accessor :player1, :player2, :my_board, :on_going, :show, :current_player, :arr_play, :victory
   def initialize
     system("clear")
     @my_board = Board.new
@@ -17,6 +17,7 @@ class Game
     @arr_play << player2   
     @on_going = true
     @show = Show.new
+    @victory = [0, 0]
   end
 
   # Cette function gere les tour et coordone les autre function
@@ -51,9 +52,14 @@ class Game
     victor = @my_board.victory?[1]
     if victor == "X"
       @show.show_board(self.my_board)
+      victory[0] += 1
+      puts "Nombre de victoire:"
+      puts "#{player1.name}:#{victory[0]}\n#{player2.name}:#{victory[1]} "
       puts "Felicitation #{player1.name} a gagner !"
     elsif victor == "O"
+      victory[1] += 1
       @show.show_board(self.my_board)
+      puts "#{player1.name}:#{victory[0]}\n#{player2.name}:#{victory[1]} "
       puts "Felicitation #{player2.name} a gagner !"
     else
       @show.show_board(self.my_board)

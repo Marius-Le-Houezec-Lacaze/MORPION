@@ -1,7 +1,7 @@
 require_relative 'board'
 # frozen_string_literal: true
 
-# Rubocop dont shoot
+# Cette fonction sers simplement a afficher la grille de Morpion
 class Show
   def show_board(cas)
     puts 'Entrer le numero de la case:'

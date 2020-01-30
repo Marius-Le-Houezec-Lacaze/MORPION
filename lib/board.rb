@@ -23,7 +23,7 @@ class Board
         i = position(gets.chomp)
         (@board[i].status == " ")? 
         (@board[i].status = "X"): 
-        (puts "vous ne pouvez pas placer ca ici".colorize(:red))
+        (puts "vous ne pouvez pas placer ici\nVous passez votre tours".colorize(:red))
         sleep 1
         who = 2
       else
@@ -31,7 +31,7 @@ class Board
         i =  position(gets.chomp)
         (@board[i].status == " ")? 
         (@board[i].status = "O"): 
-        (puts "vous ne pouvez pas placer ca ici\nVous passez votre tours".colorize(:red))
+        (puts "vous ne pouvez pas placer ici\nVous passez votre tours".colorize(:red))
         sleep 1
       end
     else

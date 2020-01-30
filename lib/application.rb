@@ -1,5 +1,6 @@
 require_relative 'game'
 
+#La classe Apllication synchonise toute les fonction ensemble
 class Application
   def perform
 

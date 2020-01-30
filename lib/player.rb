@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Rubocop dont shoot
+# Cette class permet de stocker les information lier au joueur
 class Player
   attr_reader :name, :value
   def initialize(nom, val)
