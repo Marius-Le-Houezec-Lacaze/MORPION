@@ -8,9 +8,9 @@ class Game
   def initialize
     system("clear")
     @my_board = Board.new
-    print "Joueur 1 un donner votre nom \n>"
+    print "Joueur 1 donner votre nom \n>"
     @player1 = Player.new(gets.chomp, "X")
-    print "Joueur 2 un donner votre nom \n>"
+    print "Joueur 2 donner votre nom \n>"
     @player2 = Player.new(gets.chomp, "O")
     @arr_play = []
     @arr_play << player1
