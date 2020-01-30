@@ -50,10 +50,13 @@ class Game
     system("clear")
     victor = @my_board.victory?[1]
     if victor == "X"
+      @show.show_board(self.my_board)
       puts "Felicitation #{player1.name} a gagner !"
     elsif victor == "O"
+      @show.show_board(self.my_board)
       puts "Felicitation #{player2.name} a gagner !"
     else
+      @show.show_board(self.my_board)
       puts "Match nul"
     end
     puts "Appuyer sur " + "ENTRER".colorize(:red) + " pour continuer"
