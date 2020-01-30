@@ -41,12 +41,15 @@ class Board
 
   # Cette function sers a convertir les position
   def position(pos)
+    (pos[1].to_i > 3)?(return 0):nil
     if pos[0] == "A"
       return 0 + pos[1].to_i - 1
     elsif pos[0] == "B"
       return 3 + pos[1].to_i - 1
     elsif pos[0] == "C"
       return 6 + pos[1].to_i - 1
+    elsif pos.size > 2
+      return 0
     else
       return 0    
     end
