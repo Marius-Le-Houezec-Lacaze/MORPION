@@ -63,18 +63,25 @@ class Board
     ret = true
     ret2 = true
     while i < 8
-      str = ""
-      @board[i.. 2 + i].each { |w| str.concat(w.status)}
-      (str.to_s == "XXX" || str.to_s == "OOO")? (ret = false) : (ret = true)
+      string = ""
+      @board[i.. 2 + i].each { |w| string.concat(w.status)}
+      (string.to_s == "XXX" || string.to_s == "OOO")? (ret2 = false) : (ret2 = true)
       i += 3
-      (ret == false)? (i = 8):nil
+      (ret2 == false)? (i = 8):nil
     end
+    
     while c < 3
       str = ""
       @board.values_at(0 + c, 3 + c, 6 + c).each { |w|  str.concat(w.status)}
       (str == "XXX" || str == "OOO")? (ret2 = false) : (ret2 = true)
       c += 1
       (ret2 == false)? (c = 3):nil
+    end
+    if @board.values_at(3, 4, 5).to_s.count("X") == 3
+      return [false, "X"]
+    end
+    if @board.values_at(3, 4, 5).to_s.count("O") == 3
+      return [false, "O"]
     end
     if @board.values_at(0, 4, 8).to_s.count("X") == 3
       ret = false
@@ -97,6 +104,7 @@ class Board
       ret = false
       str = "nul"
     end
+    puts str[0]
     (ret == false || ret2 == false )? 
     (return [false, str[0]]): 
     (return [true, "nil"])
