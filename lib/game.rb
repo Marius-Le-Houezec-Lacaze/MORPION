@@ -19,6 +19,7 @@ class Game
     @show = Show.new
   end
 
+  #Cette function gere les tour et coordone les autre function
   def turn
     @arr_play.each do |play|
       system("clear")
@@ -28,6 +29,7 @@ class Game
     @on_going =  @my_board.victory?[0]
   end
 
+  #Cette fonction permet de demarer une nouvelle partie sans perdre les joueur
   def new_round
     system("clear")
     print "Souhaiter vous jouer un autre partie ?\nEntrer oui ou non \n>"
@@ -43,6 +45,7 @@ class Game
     end
   end
 
+  #Cette function affiche les message de fin et de match nul
   def game_end
     system("clear")
     victor = @my_board.victory?[1]
@@ -56,5 +59,4 @@ class Game
     puts "Appuyer sur ENTRER pour continuer"
     gets.chomp
   end    
-
 end

@@ -2,6 +2,7 @@ require_relative 'board_case'
 require_relative 'show'
 
 require 'pry'
+require 'colorize'
 
 class Board
   attr_accessor :board, :count_turn, :pos
@@ -13,27 +14,34 @@ class Board
     end
   end
 
+  #Cette function gere le tour des deux jouer
   def play_turn(who)
     @count_turn += 1
     print "Joueur #{who.name} c'est votre tour\n>"
-    if who.value == "X"
-      i = gets.chomp
-      (@board[i.to_i].status == " ")? 
-      (@board[i.to_i].status = "X"): 
-      (puts "vous ne pouvez pas placer ca ici")
-      who = 2
+    if self.victory?[0] == true
+      if who.value == "X"
+        i = gets.chomp
+        (@board[i.to_i + 1].status == " ")? 
+        (@board[i.to_i + 1].status = "X"): 
+        (puts "vous ne pouvez pas placer ca ici".colorize(:red))
+        who = 2
+      else
+        who = 1 
+        i = gets.chomp
+        (@board[i.to_i + 1].status == " ")? 
+        (@board[i.to_i + 1].status = "O"): 
+        (puts "vous ne pouvez pas placer ca ici".colorize(:red))
+      end
     else
-      who = 1 
-      i = gets.chomp
-      (@board[i.to_i].status == " ")? 
-      (@board[i.to_i].status = "O"): 
-      (puts "vous ne pouvez pas placer ca ici")
+      nil
     end
   end
 
+   #Cette function determine si les condition de victoire on estait atteind
   def victory?
     i = 0
     c = 0
+    nul = ""
     ret = true
     ret2 = true
     while i < 8
@@ -66,7 +74,13 @@ class Board
       ret = false
       str = "O"
     end
-    (ret == false || ret2 == false )? (return [false, str[0]]): (return [true, "testaa"])
+    @board.each{ |c| nul.concat(c.status) }
+
+    if nul.count(" ") == 0
+      ret = false
+      str = "nul"
+    end
+    (ret == false || ret2 == false )? (return [false, str[0]]): (return [true, "nil"])
   end
 end
 
